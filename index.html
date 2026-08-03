@@ -9,6 +9,15 @@
 </head>
 <body>
 
+  <!-- CONTROL DE MÚSICA DE FONDO -->
+  <div class="music-player-container">
+    <button id="music-toggle-btn" class="music-btn-float" onclick="controlarMusica(event)">
+      🎵 <span id="music-status-text">Reproducir música</span>
+    </button>
+    <!-- Recuerda colocar tu canción en audio/musica-fondo.mp3 o cambiar el src por tu enlace -->
+    <audio id="bg-music" src="/images/audio/La Rondalla De Saltillo - Hasta Dónde Te Quiero (Letra).mp3" loop></audio>
+  </div>
+
   <section class="hero">
     <div class="hero-sparkles"></div>
     <div class="balloon-arch">
@@ -17,35 +26,54 @@
       <span></span><span></span><span></span>
     </div>
 
+    <div class="deco-disco deco-disco--hero">✦</div>
+    <div class="deco-star deco-star--hero-1">✦</div>
+    <div class="deco-star deco-star--hero-2">✧</div>
+    <div class="deco-star deco-star--hero-3">✦</div>
+
+    <figure class="polaroid polaroid--tape hero-photo hero-photo--left">
+      <img src="/images/foto1.jpeg" alt="Diana de bebé">
+    </figure>
+    <figure class="polaroid polaroid--tape hero-photo hero-photo--right">
+      <img src="/images/foto3.jpeg" alt="Diana caminando de la mano">
+    </figure>
+
     <div class="hero-content">
       <div class="age-badge">✦ UNA NOCHE PARA RECORDAR ✦</div>
       <div class="hero-emblem">18</div>
       <h1>Diana<br>Méndez</h1>
       <p class="hero-sub">Mis 18 años</p>
       <div class="hero-banner"> Acompáñame a celebrar</div>
-      <!-- ⬇️ Aquí puedes ajustar la hora si hace falta -->
       <p class="hero-date">
-  SÁBADO 29 DE AGOSTO<br>
-  <span>5:30 P.M.</span>
-</p>
+        SÁBADO 29 DE AGOSTO<br>
+        <span>5:30 P.M.</span>
+      </p>
     </div>
     <div class="scroll-hint">DESLIZA ↓</div>
   </section>
+  
 
   <section class="map-section">
+    <div class="deco-star deco-star--map-1">✧</div>
+    <div class="deco-star deco-star--map-2">✦</div>
     <div class="max-w">
       <p class="section-label">✦ Cómo llegar</p>
       <h2 class="section-title">Ubicación</h2>
       <p class="map-address">Villa Julieta</p>
-      <div class="map-container">
-        <iframe
-          src="https://www.google.com/maps?cid=3609099999336012638&output=embed"
-          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-          title="Ubicación del evento">
-        </iframe>
+      <div class="map-container-wrap">
+        <figure class="polaroid polaroid--tape map-photo">
+          <img src="/images/foto4.jpeg" alt="Diana en su primer día de clases">
+        </figure>
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps?cid=3609099999336012638&output=embed"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            title="Ubicación del evento">
+          </iframe>
+        </div>
       </div>
       <div class="map-buttons">
-        <a href="https://www.google.com/maps/search/?api=1&query=Villa+Julieta&query_place_id=ChIJ0Whw2qvBi4URXhtJ21MZFjI" target="_blank" class="map-btn map-btn--primary">
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Villa+Julieta&amp;query_place_id=ChIJ0Whw2qvBi4URXhtJ21MZFjI" target="_blank" class="map-btn map-btn--primary">
           🗺️ Abrir en Maps
         </a>
         <a href="https://maps.apple.com/?ll=15.3475621,-90.863674&q=Villa%20Julieta" target="_blank" class="map-btn map-btn--secondary">
@@ -56,6 +84,11 @@
   </section>
 
   <section class="form-section" id="registro">
+    <div class="deco-star deco-star--form-1">✦</div>
+    <div class="deco-star deco-star--form-2">✧</div>
+    <figure class="polaroid polaroid--tape form-photo">
+      <img src="/images/foto5.jpeg" alt="Diana de pequeña parada en la cama">
+    </figure>
     <div class="form-wrap">
       <p class="section-label">✦ RSVP.</p>
       <h2 class="section-title">Confirma tu Asistencia</h2>
@@ -79,16 +112,6 @@
           <div class="form-group">
             <label for="f-name">Tu Nombre *</label>
             <input type="text" id="f-name" placeholder="¿Quién viene?">
-          </div>
-          <div class="form-group">
-            <label for="f-guests">¿Cuántos acompañantes? (opcional)</label>
-            <select id="f-guests">
-              <option value="0">Voy sola/solo</option>
-              <option value="1">1 acompañante</option>
-              <option value="2">2 acompañantes</option>
-              <option value="3">3 acompañantes</option>
-              <option value="4">4 acompañantes</option>
-            </select>
           </div>
         </div>
 

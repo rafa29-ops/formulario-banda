@@ -3,7 +3,7 @@
    ============================================ */
 
 // ============================================
-// PARTÍCULAS FLOTANTES DE FONDO (destellos dorados)
+// PARTÍCULAS FLOTANTES DE FONDO
 // ============================================
 (function crearParticulas() {
   const colores = ['#C9A227', '#E8CE8B', '#E8A9B8'];
@@ -26,7 +26,6 @@
 
 // ============================================
 // MOSTRAR / OCULTAR CAMPOS SEGÚN LA RESPUESTA
-// (si dice que sí asiste, mostramos nombre + acompañantes)
 // ============================================
 function toggleAttendanceFields() {
   const respuesta = document.getElementById('f-attendance').value;
@@ -74,33 +73,27 @@ function mostrarConfirmacion(nombre) {
 
 // ============================================
 // VALIDAR Y ENVIAR EL FORMULARIO
-// (formulario simple: ¿asiste? -> si es sí, nombre + acompañantes opcional)
 // ============================================
 function submitForm() {
   const asistencia = document.getElementById('f-attendance').value;
 
   if (!asistencia) { alert('Cuéntanos si vienes o no, porfa 🙏'); return; }
 
-  // Si dijo que NO asiste, no pedimos más datos: solo agradecemos.
   if (asistencia === 'no') {
     document.getElementById('form-container').innerHTML =
       '<p style="text-align:center; font-size:1.1rem; padding:2rem 0;">Gracias por avisarnos. ¡Te vamos a extrañar en la fiesta!</p>';
     return;
   }
 
-  // Si dijo que SÍ asiste, pedimos nombre (obligatorio) y acompañantes (opcional)
   const nombre = document.getElementById('f-name').value.trim();
-  const acompanantes = document.getElementById('f-guests').value || '0';
 
   if (!nombre) { alert('Escribe tu nombre para saber quién eres 😊'); return; }
 
   const boton = document.getElementById('submit-btn');
   boton.disabled = true; boton.textContent = 'PROCESANDO...';
 
-  // Envío a Google Sheets (ver instrucciones abajo)
   enviarAGoogleSheets({
     nombre: nombre,
-    acompanantes: acompanantes,
     fecha: new Date().toLocaleDateString('es-MX')
   });
 
@@ -114,7 +107,6 @@ function submitForm() {
 // ENVÍO A GOOGLE SHEETS
 // ============================================
 function enviarAGoogleSheets(datos) {
-
   const URL_GOOGLE_SHEETS = 'https://script.google.com/macros/s/AKfycbyub3TK23YxxspzOgLfOrIoR1BdxBFrw6BZDoEcT797KkwBMB4Vm1YcL0VYGFffLqK8zQ/exec';
 
   if (!URL_GOOGLE_SHEETS) {
@@ -122,15 +114,52 @@ function enviarAGoogleSheets(datos) {
     return;
   }
 
-  // OJO: con mode:'no-cors', el navegador manda una petición "preflight" (OPTIONS)
-  // si el Content-Type es 'application/json', y Apps Script no sabe responder a eso,
-  // así que el envío falla en silencio (por eso no llegaban los datos).
-  // Usando 'text/plain' evitamos el preflight; en el lado de Apps Script
-  // se sigue leyendo como JSON con JSON.parse(e.postData.contents).
   fetch(URL_GOOGLE_SHEETS, {
     method: 'POST',
-    mode: 'no-cors', // Importante para evitar problemas de CORS
+    mode: 'no-cors',
     headers: { 'Content-Type': 'text/plain' },
     body: JSON.stringify(datos)
   }).catch(e => console.error('Error:', e));
+}
+
+
+// ============================================
+// REPRODUCTOR DE MÚSICA DE FONDO (AUTO AL PRIMER TOQUE)
+// ============================================
+const reproductor = document.getElementById('bg-music');
+const botonMusica = document.getElementById('music-toggle-btn');
+const textoMusica = document.getElementById('music-status-text');
+
+function intentarAutoPlay() {
+  reproductor.play().then(() => {
+    botonMusica.classList.add('is-playing');
+    if (textoMusica) textoMusica.textContent = "Pausar";
+    
+    // Una vez empiece a reproducir, eliminamos los listeners globales
+    document.removeEventListener('click', intentarAutoPlay);
+    document.removeEventListener('touchstart', intentarAutoPlay);
+    document.removeEventListener('scroll', intentarAutoPlay);
+  }).catch(error => {
+    console.log("Esperando la primera interacción del usuario.");
+  });
+}
+
+// Escucha activa para reproducir al primer toque, clic o scroll en cualquier parte de la web
+document.addEventListener('click', intentarAutoPlay);
+document.addEventListener('touchstart', intentarAutoPlay);
+document.addEventListener('scroll', intentarAutoPlay, { passive: true });
+
+// Control manual del botón flotante
+function controlarMusica(event) {
+  event.stopPropagation(); // Evita interferir con los disparadores globales
+  
+  if (reproductor.paused) {
+    reproductor.play();
+    botonMusica.classList.add('is-playing');
+    if (textoMusica) textoMusica.textContent = "Pausar";
+  } else {
+    reproductor.pause();
+    botonMusica.classList.remove('is-playing');
+    if (textoMusica) textoMusica.textContent = "Reproducir";
+  }
 }
