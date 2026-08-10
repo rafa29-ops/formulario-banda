@@ -179,7 +179,7 @@ a, button, input, select, textarea {
 
 .site-logo-static {
   position: absolute;
-  bottom: 1px;
+  bottom: px;
   width: 130px;
   height: auto;
   opacity: 0.3;
@@ -192,7 +192,7 @@ a, button, input, select, textarea {
 @media (max-width: 480px) {
   .site-logo-static {
     width: 90px;
-    bottom: 1px;
+    bottom: px;
   }
   .site-logo-static--left { left: 12px; }
 }
