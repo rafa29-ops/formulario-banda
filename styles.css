@@ -111,12 +111,19 @@ a, button, input, select, textarea {
 
 .hero-sub {
   margin-top: 1.2rem;
+  display: inline-block;
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   font-size: clamp(0.9rem, 2.2vw, 1.15rem);
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--gold-light);
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  background: rgba(20, 14, 20, 0.1);
+  border: 1px solid rgba(232,206,139,0.35);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
   animation: brilloDorado 3s ease-in-out infinite;
 }
 
