@@ -188,7 +188,6 @@ a, button, input, select, textarea {
 }
 
 .site-logo-static--left { left: 24px; }
-.site-logo-static--right { right: 24px; width: 42px; }
 
 @media (max-width: 480px) {
   .site-logo-static {
@@ -196,7 +195,6 @@ a, button, input, select, textarea {
     bottom: 16px;
   }
   .site-logo-static--left { left: 12px; }
-  .site-logo-static--right { right: 12px; width: 30px; }
 }
 
 /* ============================================
