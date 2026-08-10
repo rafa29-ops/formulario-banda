@@ -178,21 +178,21 @@ a, button, input, select, textarea {
 .form-note { text-align: center; color: var(--charcoal-soft); font-size: 0.78rem; margin-top: 1rem; }
 
 .site-logo-static {
-  position: absolute;
+  position: fixed;
   bottom: 24px;
-  left: 24px;
-  width: 150px;
+  left: 14px;
+  width: 130px;
   height: auto;
-  opacity: 0.22;
+  opacity: 0.35;
+  z-index: 50;
   pointer-events: none;
-  z-index: 0;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 480px) {
   .site-logo-static {
-    width: 100px;
+    width: 90px;
+    left: 8px;
     bottom: 16px;
-    left: 16px;
   }
 }
 
@@ -201,9 +201,8 @@ a, button, input, select, textarea {
    ============================================ */
 .site-watermark {
   position: fixed;
-  top: 50%;
+  bottom: 24px;
   right: 14px;
-  transform: translateY(-50%);
   width: 64px;
   height: auto;
   opacity: 0.35;
@@ -215,6 +214,7 @@ a, button, input, select, textarea {
   .site-watermark {
     width: 42px;
     right: 8px;
+    bottom: 16px;
     opacity: 0.3;
   }
 }
