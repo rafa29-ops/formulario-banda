@@ -47,7 +47,7 @@ function mostrarConfirmacion(nombre) {
 // ENVÍO A GOOGLE SHEETS
 // ============================================
 function enviarAGoogleSheets(datos) {
-  const URL_GOOGLE_SHEETS = 'https://script.google.com/macros/s/AKfycbyub3TK23YxxspzOgLfOrIoR1BdxBFrw6BZDoEcT797KkwBMB4Vm1YcL0VYGFffLqK8zQ/exec';
+  const URL_GOOGLE_SHEETS = 'https://script.google.com/macros/s/AKfycbwH13-6aFhnpcY2tfeFAqJrZ2E2SXt5PLkIVzd51vYN_5-rETxKSZdFRjE6TN_J-W7OtA/exec';
 
   if (!URL_GOOGLE_SHEETS) {
     console.info('📋 Datos (Google Sheets no configurado):', datos);
