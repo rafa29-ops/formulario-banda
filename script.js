@@ -4,6 +4,19 @@
    ============================================ */
 
 // ============================================
+// TELÉFONO: SOLO NÚMEROS MIENTRAS SE ESCRIBE
+// ============================================
+document.addEventListener('DOMContentLoaded', function() {
+  const campoTelefono = document.getElementById('f-phone');
+  if (campoTelefono) {
+    campoTelefono.addEventListener('input', function() {
+      this.value = this.value.replace(/\D/g, '').slice(0, 8);
+    });
+  }
+});
+
+
+// ============================================
 // VALIDAR Y ENVIAR EL FORMULARIO
 // ============================================
 function submitForm() {
@@ -14,7 +27,7 @@ function submitForm() {
 
   if (!nombreCompleto) { alert('Escribe tu nombre y apellido, porfa 🙏'); return; }
   if (!edad) { alert('Indica tu edad.'); return; }
-  if (!telefono) { alert('Escribe tu número de teléfono.'); return; }
+  if (!/^\d{8}$/.test(telefono)) { alert('El número de teléfono debe tener exactamente 8 dígitos, solo números.'); return; }
   if (!disponibilidad) { alert('Cuéntanos tu disponibilidad de tiempo para los ensayos.'); return; }
 
   const boton = document.getElementById('submit-btn');
@@ -50,7 +63,7 @@ function mostrarConfirmacion(nombre) {
 // ENVÍO A GOOGLE SHEETS
 // ============================================
 function enviarAGoogleSheets(datos) {
-  const URL_GOOGLE_SHEETS = 'https://script.google.com/macros/s/AKfycbyub3TK23YxxspzOgLfOrIoR1BdxBFrw6BZDoEcT797KkwBMB4Vm1YcL0VYGFffLqK8zQ/exec';
+  const URL_GOOGLE_SHEETS = 'https://script.google.com/macros/s/AKfycbwH13-6aFhnpcY2tfeFAqJrZ2E2SXt5PLkIVzd51vYN_5-rETxKSZdFRjE6TN_J-W7OtA/exec';
 
   if (!URL_GOOGLE_SHEETS) {
     console.info('📋 Datos (Google Sheets no configurado):', datos);

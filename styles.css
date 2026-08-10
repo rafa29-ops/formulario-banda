@@ -122,10 +122,10 @@ a, button, input, select, textarea {
 
 @keyframes brilloDorado {
   0%, 100% {
-    text-shadow: 0 2px 10px rgba(0,0,0,0.4), 0 0 12px rgba(232,206,139,0.45), 0 0 24px rgba(232,206,139,0.25);
+    text-shadow: 0 2px 10px rgba(0,0,0,0.4), 0 0 16px rgba(232,206,139,0.6), 0 0 30px rgba(232,206,139,0.35);
   }
   50% {
-    text-shadow: 0 2px 10px rgba(0,0,0,0.4), 0 0 22px rgba(232,206,139,0.85), 0 0 42px rgba(232,206,139,0.55);
+    text-shadow: 0 2px 10px rgba(0,0,0,0.4), 0 0 28px rgba(232,206,139,1), 0 0 52px rgba(232,206,139,0.7);
   }
 }
 
