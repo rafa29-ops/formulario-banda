@@ -192,7 +192,7 @@ a, button, input, select, textarea {
 @media (max-width: 480px) {
   .site-logo-static {
     width: 90px;
-    bottom: 8px;
+    bottom: 1px;
   }
   .site-logo-static--left { left: 12px; }
 }
