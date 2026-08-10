@@ -9,10 +9,12 @@
 function submitForm() {
   const nombreCompleto = document.getElementById('f-name').value.trim();
   const edad = document.getElementById('f-age').value.trim();
+  const telefono = document.getElementById('f-phone').value.trim();
   const disponibilidad = document.getElementById('f-availability').value.trim();
 
   if (!nombreCompleto) { alert('Escribe tu nombre y apellido, porfa 🙏'); return; }
   if (!edad) { alert('Indica tu edad.'); return; }
+  if (!telefono) { alert('Escribe tu número de teléfono.'); return; }
   if (!disponibilidad) { alert('Cuéntanos tu disponibilidad de tiempo para los ensayos.'); return; }
 
   const boton = document.getElementById('submit-btn');
@@ -21,6 +23,7 @@ function submitForm() {
   enviarAGoogleSheets({
     nombreCompleto: nombreCompleto,
     edad: edad,
+    telefono: telefono,
     disponibilidad: disponibilidad,
     fecha: new Date().toLocaleDateString('es-MX')
   });
@@ -47,7 +50,7 @@ function mostrarConfirmacion(nombre) {
 // ENVÍO A GOOGLE SHEETS
 // ============================================
 function enviarAGoogleSheets(datos) {
-  const URL_GOOGLE_SHEETS = 'https://script.google.com/macros/s/AKfycbwH13-6aFhnpcY2tfeFAqJrZ2E2SXt5PLkIVzd51vYN_5-rETxKSZdFRjE6TN_J-W7OtA/exec';
+  const URL_GOOGLE_SHEETS = 'https://script.google.com/macros/s/AKfycbyub3TK23YxxspzOgLfOrIoR1BdxBFrw6BZDoEcT797KkwBMB4Vm1YcL0VYGFffLqK8zQ/exec';
 
   if (!URL_GOOGLE_SHEETS) {
     console.info('📋 Datos (Google Sheets no configurado):', datos);

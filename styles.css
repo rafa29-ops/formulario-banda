@@ -117,7 +117,16 @@ a, button, input, select, textarea {
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--gold-light);
-  text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+  animation: brilloDorado 3s ease-in-out infinite;
+}
+
+@keyframes brilloDorado {
+  0%, 100% {
+    text-shadow: 0 2px 10px rgba(0,0,0,0.4), 0 0 12px rgba(232,206,139,0.45), 0 0 24px rgba(232,206,139,0.25);
+  }
+  50% {
+    text-shadow: 0 2px 10px rgba(0,0,0,0.4), 0 0 22px rgba(232,206,139,0.85), 0 0 42px rgba(232,206,139,0.55);
+  }
 }
 
 /* ============================================
@@ -166,4 +175,21 @@ a, button, input, select, textarea {
    ============================================ */
 @media (max-width: 600px) {
   section { padding: 3.5rem 1.25rem; }
+
+  .hero {
+    padding: 2.5rem 1.25rem;
+    background-position: center top;
+    background-image:
+      linear-gradient(to bottom, rgba(12,8,12,0.12) 0%, rgba(12,8,12,0.4) 60%, var(--cream) 100%),
+      url('images/fondo.jpeg');
+  }
+
+  .hero-logo {
+    width: clamp(120px, 32vw, 170px);
+    margin-bottom: 1.2rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero h1 { letter-spacing: -0.5px; }
 }
